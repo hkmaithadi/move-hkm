@@ -48,7 +48,7 @@ export default function Contact() {
                                     </div>
                                     <div>
                                         <p className="font-bold text-gray-900">Phone</p>
-                                        <p className="text-gray-600" dir="ltr">+1 (555) 123-4567</p>
+                                        <p className="text-gray-600" dir="ltr">+212 605-671896</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-4">
@@ -57,7 +57,7 @@ export default function Contact() {
                                     </div>
                                     <div>
                                         <p className="font-bold text-gray-900">Email</p>
-                                        <p className="text-gray-600" dir="ltr">hello@moveagency.com</p>
+                                        <p className="text-gray-600" dir="ltr">info.movecommunity@gmail.com</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-4">
@@ -66,7 +66,7 @@ export default function Contact() {
                                     </div>
                                     <div>
                                         <p className="font-bold text-gray-900">Office</p>
-                                        <p className="text-gray-600">123 Agency Way, Study City, ST 12345</p>
+                                        <p className="text-gray-600">Hay Drissia, Rés. Rama Business, Bd Abou Chouaib Doukkali, Casablanca</p>
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +87,7 @@ export default function Contact() {
                                         onChange={handleChange}
                                         required
                                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
-                                        placeholder="John Doe"
+                                        placeholder="Mohammed Admed"
                                     />
                                 </div>
                                 <div>
@@ -100,7 +100,7 @@ export default function Contact() {
                                         onChange={handleChange}
                                         required
                                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
-                                        placeholder="john@example.com"
+                                        placeholder="mohammed@ahmed.com"
                                     />
                                 </div>
                             </div>
@@ -115,7 +115,7 @@ export default function Contact() {
                                         value={formData.phone}
                                         onChange={handleChange}
                                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
-                                        placeholder="+1 (555) 000-0000"
+                                        placeholder="+212 600-000000"
                                     />
                                 </div>
                                 <div>
