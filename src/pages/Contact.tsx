@@ -1,24 +1,66 @@
-import { useState, type FormEvent } from 'react';
-import { Send, Phone, Mail, MapPin, ArrowLeft } from 'lucide-react';
+import { useState, useRef, type FormEvent } from 'react';
+import { Send, Phone, Mail, MapPin, ArrowLeft, Loader2 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+import SuccessModal from '../components/SuccessModal';
 
-
+// EmailJS Configuration
+const SERVICE_ID = 'service_9nx2mja'; // ⚠️ REPLACE THIS WITH YOUR SERVICE ID (e.g., service_gmail)
+const TEMPLATE_ID = 'template_quuy86s';
+const PUBLIC_KEY = 'J1p-nAeO9nIB6NVqr';
 
 export default function Contact() {
     const isRtl = false;
+    const form = useRef<HTMLFormElement>(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [showSuccess, setShowSuccess] = useState(false);
 
     const [formData, setFormData] = useState({
-        name: '',
+        full_name: '',
         email: '',
         phone: '',
         destination: '',
         message: '',
     });
 
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
-        console.log('Form Submitted:', formData);
-        alert('Thank you! We will be in touch soon.');
-        setFormData({ name: '', email: '', phone: '', destination: '', message: '' });
+
+        if (!SERVICE_ID) {
+            alert('Error: Service ID is missing.');
+            return;
+        }
+
+        setIsSubmitting(true);
+
+        try {
+            // Initialize EmailJS with the Public Key
+            emailjs.init(PUBLIC_KEY);
+
+            const result = await emailjs.sendForm(
+                SERVICE_ID,
+                TEMPLATE_ID,
+                form.current!,
+                PUBLIC_KEY
+            );
+
+            console.log('SUCCESS!', result.status, result.text);
+            setShowSuccess(true);
+            setFormData({ full_name: '', email: '', phone: '', destination: '', message: '' });
+        } catch (error: any) {
+            console.error('Full Error Object:', error);
+
+            // Handle different types of EmailJS errors
+            let errorMsg = 'Unknown Error';
+            if (typeof error === 'string') errorMsg = error;
+            else if (error?.text) errorMsg = error.text;
+            else if (error?.message) errorMsg = error.message;
+            else if (error?.status) errorMsg = `HTTP ${error.status}: ${error.text || 'No message'}`;
+
+            console.error('Extracted Error Message:', errorMsg);
+            alert(`❌ Send Failed! \n\nMessage: ${errorMsg}\n\nPlease check your EmailJS dashboard setup.`);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -75,15 +117,15 @@ export default function Contact() {
 
                     {/* Form */}
                     <div className="lg:col-span-2">
-                        <form onSubmit={handleSubmit} className="bg-white p-8 md:p-10 rounded-2xl shadow-lg">
+                        <form ref={form} onSubmit={handleSubmit} className="bg-white p-8 md:p-10 rounded-2xl shadow-lg">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                                 <div>
-                                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                                    <label htmlFor="full_name" className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
                                     <input
                                         type="text"
-                                        id="name"
-                                        name="name"
-                                        value={formData.name}
+                                        id="full_name"
+                                        name="full_name"
+                                        value={formData.full_name}
                                         onChange={handleChange}
                                         required
                                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
@@ -152,14 +194,29 @@ export default function Contact() {
 
                             <button
                                 type="submit"
-                                className="w-full bg-primary text-secondary font-bold py-4 rounded-lg hover:bg-yellow-400 transition-colors flex items-center justify-center gap-2 text-lg shadow-md"
+                                disabled={isSubmitting}
+                                className="w-full bg-primary text-secondary font-bold py-4 rounded-lg hover:bg-yellow-400 transition-colors flex items-center justify-center gap-2 text-lg shadow-md disabled:opacity-70 disabled:cursor-not-allowed"
                             >
-                                Send Message {isRtl ? <ArrowLeft size={20} /> : <Send size={20} />}
+                                {isSubmitting ? (
+                                    <>
+                                        <Loader2 size={20} className="animate-spin" />
+                                        Sending...
+                                    </>
+                                ) : (
+                                    <>
+                                        Send Message {isRtl ? <ArrowLeft size={20} /> : <Send size={20} />}
+                                    </>
+                                )}
                             </button>
                         </form>
                     </div>
                 </div>
             </div>
+
+            <SuccessModal
+                isOpen={showSuccess}
+                onClose={() => setShowSuccess(false)}
+            />
         </div>
     );
 }
