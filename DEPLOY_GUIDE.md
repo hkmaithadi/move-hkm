@@ -23,8 +23,8 @@ Whenever you make changes to your code (editors, text, images, etc.) and want th
 
 ## Important Note
 You should also save your source code changes to GitHub (for backup) periodically:
-```powershell
 git add .
 git commit -m "Description of changes"
+git pull origin main
 git push origin main
 ```

@@ -51,7 +51,7 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
                         animate={{ scale: 1, opacity: 1, y: 0 }}
                         exit={{ scale: 0.95, opacity: 0, y: 20 }}
                         transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                        className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden z-10"
+                        className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl z-10 flex flex-col max-h-[85vh] md:max-h-[auto]"
                         onClick={e => e.stopPropagation()}
                     >
                         <button
@@ -61,15 +61,15 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
                             <X size={24} className="text-gray-500" />
                         </button>
 
-                        <div className="grid md:grid-cols-5_3_2 h-full md:grid-cols-[2fr_3fr]">
+                        <div className="grid md:grid-cols-[2fr_3fr] overflow-y-auto">
                             <div className="bg-secondary/5 p-8 flex flex-col items-center justify-center text-center border-b md:border-b-0 md:border-r border-gray-100">
-                                <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center text-primary shadow-lg mb-6">
+                                <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center text-primary shadow-lg mb-6 flex-shrink-0">
                                     <div className="transform scale-150">
                                         {service.icon}
                                     </div>
                                 </div>
                                 <h3 className="text-2xl font-bold text-secondary mb-2">{service.title}</h3>
-                                <div className="w-16 h-1 bg-primary rounded-full"></div>
+                                <div className="w-16 h-1 bg-primary rounded-full flex-shrink-0"></div>
                             </div>
 
                             <div className="p-8">
