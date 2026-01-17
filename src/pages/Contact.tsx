@@ -4,7 +4,7 @@ import emailjs from '@emailjs/browser';
 import SuccessModal from '../components/SuccessModal';
 
 // EmailJS Configuration
-const SERVICE_ID = 'service_9nx2mja'; // ⚠️ REPLACE THIS WITH YOUR SERVICE ID (e.g., service_gmail)
+const SERVICE_ID = 'service_9nx2mja';
 const TEMPLATE_ID = 'template_quuy86s';
 const PUBLIC_KEY = 'J1p-nAeO9nIB6NVqr';
 
