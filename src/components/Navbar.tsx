@@ -22,22 +22,22 @@ export default function Navbar() {
 
     return (
         <nav className="sticky top-0 z-50 bg-gradient-to-b from-secondary/10 via-white/10 to-white/0 backdrop-blur-lg shadow-[0_8px_30px_rgba(15,23,42,0.14)]">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between h-20 items-center">
+            <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+                <div className="flex justify-between h-16 md:h-20 items-center">
                     {/* Logo */}
-                    <Link to="/" className="flex-shrink-0 flex items-center gap-3">
-                        <div className="relative">
+                    <Link to="/" className="flex-shrink-0 flex items-center gap-2 md:gap-3 min-w-0">
+                        <div className="relative flex-shrink-0">
                             <div className="absolute inset-0 rounded-full bg-white/60 blur-md" />
                             <img
                                 src={`${import.meta.env.BASE_URL}logo.jpg`}
                                 alt="Move Agency Logo"
-                                className="relative w-10 h-10 rounded-full object-cover ring-2 ring-white/70 shadow-md"
+                                className="relative w-8 md:w-10 h-8 md:h-10 rounded-full object-cover ring-2 ring-white/70 shadow-md"
                             />
                         </div>
-                        <div className="flex flex-col">
-                            <span className="font-bold text-2xl text-secondary tracking-tight leading-none">Move</span>
-                            <span className="text-[11px] uppercase tracking-[0.25em] text-slate-500">
-                                Study Abroad Agency
+                        <div className="flex flex-col min-w-0">
+                            <span className="font-bold text-lg md:text-2xl text-secondary tracking-tight leading-none">Move</span>
+                            <span className="text-[10px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.25em] text-slate-500 truncate">
+                                Study Abroad
                             </span>
                         </div>
                     </Link>
@@ -73,14 +73,14 @@ export default function Navbar() {
                     </div>
 
                     {/* Mobile Menu Button */}
-                    <div className="md:hidden flex items-center gap-3">
+                    <div className="md:hidden flex items-center gap-2 sm:gap-3">
                         <LanguageSwitcher />
                         <button
                             onClick={toggleMenu}
                             className="inline-flex items-center justify-center rounded-full border border-white/60 bg-white/30 p-2 shadow-[0_6px_18px_rgba(15,23,42,0.16)] text-secondary hover:text-primary hover:bg-white/60 transition-all focus:outline-none"
                             aria-label={t('nav.toggleMenu')}
                         >
-                            {isOpen ? <X size={22} /> : <Menu size={22} />}
+                            {isOpen ? <X size={20} /> : <Menu size={20} />}
                         </button>
                     </div>
                 </div>
@@ -89,13 +89,13 @@ export default function Navbar() {
             {/* Mobile Menu */}
             {isOpen && (
                 <div className="md:hidden absolute w-full bg-white/85 backdrop-blur-lg border-b border-white/60 shadow-[0_14px_34px_rgba(15,23,42,0.22)]">
-                    <div className="px-4 pt-2 pb-6 space-y-2">
+                    <div className="px-3 sm:px-4 pt-2 pb-4 space-y-1.5">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.path}
                                 to={link.path}
                                 onClick={toggleMenu}
-                                className={`block px-3 py-3 rounded-xl text-base font-medium transition-all ${
+                                className={`block px-3 py-2.5 sm:py-3 rounded-lg sm:rounded-xl text-sm sm:text-base font-medium transition-all ${
                                     isActive(link.path)
                                         ? 'text-secondary bg-yellow-50 shadow-sm'
                                         : 'text-slate-700 hover:text-secondary hover:bg-slate-50'
@@ -107,7 +107,7 @@ export default function Navbar() {
                         <Link
                             to="/contact"
                             onClick={toggleMenu}
-                            className="block w-full text-center mt-4 bg-gradient-to-r from-primary via-yellow-300 to-primary text-secondary px-6 py-3 rounded-full font-semibold shadow-[0_10px_26px_rgba(250,204,21,0.35)] hover:brightness-105 transition-all"
+                            className="block w-full text-center mt-3 sm:mt-4 bg-gradient-to-r from-primary via-yellow-300 to-primary text-secondary px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold shadow-[0_10px_26px_rgba(250,204,21,0.35)] hover:brightness-105 transition-all"
                         >
                             {t('nav.contact')}
                         </Link>
