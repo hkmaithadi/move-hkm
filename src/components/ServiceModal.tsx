@@ -2,6 +2,7 @@ import { X, CheckCircle2 } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import type { ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 interface ServiceModalProps {
     isOpen: boolean;
@@ -15,6 +16,7 @@ interface ServiceModalProps {
 }
 
 export default function ServiceModal({ isOpen, onClose, service }: ServiceModalProps) {
+    const { t } = useTranslation();
     const modalRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -55,8 +57,10 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
                         onClick={e => e.stopPropagation()}
                     >
                         <button
+                            type="button"
                             onClick={onClose}
-                            className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100 transition-colors z-20"
+                            className="absolute top-4 right-4 rtl:left-4 rtl:right-auto p-2 rounded-full hover:bg-gray-100 transition-colors z-20"
+                            aria-label={t('modal.closeAria')}
                         >
                             <X size={24} className="text-gray-500" />
                         </button>
@@ -73,12 +77,12 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
                             </div>
 
                             <div className="p-8">
-                                <h4 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Service Details</h4>
+                                <h4 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">{t('modal.serviceDetails')}</h4>
                                 <p className="text-gray-600 leading-relaxed mb-6">
                                     {service.description}
                                 </p>
 
-                                <h4 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Key Benefits</h4>
+                                <h4 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">{t('modal.keyBenefits')}</h4>
                                 <ul className="space-y-3">
                                     {service.details.map((detail, index) => (
                                         <li key={index} className="flex items-start gap-3">
@@ -93,7 +97,7 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
                                         onClick={onClose}
                                         className="w-full bg-secondary text-white py-3 rounded-xl font-semibold hover:bg-primary hover:text-secondary transition-colors"
                                     >
-                                        Close Details
+                                        {t('modal.closeDetails')}
                                     </button>
                                 </div>
                             </div>

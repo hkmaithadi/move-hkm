@@ -1,20 +1,27 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import { pagesEN } from './locales/pages-en';
+import { pagesFR } from './locales/pages-fr';
+import { pagesAR } from './locales/pages-ar';
 
 // Translation resources
 const resources = {
     en: {
         translation: {
+            language: {
+                label: "Language",
+            },
             nav: {
                 home: "Home",
-                services: "Our Services",
-                destinations: "Our Destinations",
+                services: "Services",
+                destinations: "Destinations",
                 about: "About Us",
-                contact: "Get in Touch"
+                contact: "Get in Touch",
+                toggleMenu: "Toggle menu"
             },
             footer: {
-                description: "Helping students broaden their horizons through international study experiences in Ireland, UK, Germany, and Canada.",
+                description: "Helping students broaden their horizons through international study experiences in Ireland, UK, Germany, Canada, and more.",
                 quickLinks: "Quick Links",
                 contactUs: "Contact Us",
                 rights: "Move Study Abroad Agency. All rights reserved."
@@ -48,9 +55,8 @@ const resources = {
                     viewDetails: "View Details"
                 }
             },
-        },
-        destinations: {
-            title: "Our Destinations",
+            destinations: {
+            title: "Destinations",
             subtitle: "Choose from our carefully selected list of study destinations, each offering unique benefits and world-class education.",
             cta: "Start your journey to",
             ireland: {
@@ -71,7 +77,7 @@ const resources = {
             }
         },
         services: {
-            title: "Our Services",
+            title: "Services",
             subtitle: "Comprehensive support for every step of your study abroad journey.",
             cta: "Get Personalised Advice",
             admissions: {
@@ -128,15 +134,149 @@ const resources = {
                 other: "Other/Undecided"
             }
         }
+        }
+    },
+    fr: {
+        translation: {
+            language: {
+                label: "Langue",
+            },
+            nav: {
+                home: "Accueil",
+                services: "Services",
+                destinations: "Destinations",
+                about: "À propos",
+                contact: "Contact",
+                toggleMenu: "Ouvrir le menu"
+            },
+            footer: {
+                description: "Nous aidons les étudiants à élargir leurs horizons grâce à des expériences d'études internationales en Irlande, au Royaume-Uni, en Allemagne, au Canada et au-delà.",
+                quickLinks: "Liens rapides",
+                contactUs: "Nous contacter",
+                rights: "Move Study Abroad Agency. Tous droits réservés."
+            },
+            home: {
+                heroTitle: "Votre avenir commence",
+                heroTitleHighlight: "à l'étranger",
+                heroSubtitle: "Découvrez des opportunités d'études de classe mondiale en Irlande, au Royaume-Uni, en Allemagne et au Canada. Move vous accompagne à chaque étape.",
+                exploreBtn: "Explorer les destinations",
+                learnMoreBtn: "En savoir plus",
+                whyChooseUs: {
+                    title: "Pourquoi nous choisir",
+                    reason1Title: "Réseau mondial",
+                    reason1Desc: "Partenaires d'institutions leaders dans 4 grands pays.",
+                    reason2Title: "Accompagnement personnalisé",
+                    reason2Desc: "Des conseillers experts pour vous aider à choisir la bonne voie.",
+                    reason3Title: "Taux de réussite élevé",
+                    reason3Desc: "Des milliers d'étudiants placés avec succès dans le monde."
+                },
+                howItWorks: {
+                    title: "Comment ça marche",
+                    step1Title: "Découvrir",
+                    step1Desc: "Parcourez notre liste d'universités et de cursus.",
+                    step2Title: "Postuler",
+                    step2Desc: "Soumettez votre dossier avec notre aide pas à pas.",
+                    step3Title: "Partir",
+                    step3Desc: "Obtenez votre visa et préparez votre départ."
+                },
+                topDestinations: {
+                    title: "Destinations phares",
+                    viewDetails: "Voir les détails"
+                }
+            },
+            destinations: {
+                title: "Destinations",
+                subtitle: "Choisissez parmi nos destinations d'études sélectionnées, chacune offrant des avantages uniques et une formation d'excellence.",
+                cta: "Commencez votre voyage vers",
+                ireland: {
+                    name: "Irlande",
+                    desc: "Réputée pour son accueil et son histoire, l'Irlande offre une qualité d'enseignement élevée et des perspectives de travail post-études."
+                },
+                uk: {
+                    name: "Royaume-Uni",
+                    desc: "Berceau de certaines des plus anciennes universités au monde. Vivez l'excellence académique au Royaume-Uni."
+                },
+                germany: {
+                    name: "Allemagne",
+                    desc: "Pôle d'innovation et d'ingénierie. Frais de scolarité bas et communauté étudiante internationale dynamique."
+                },
+                canada: {
+                    name: "Canada",
+                    desc: "Accueillant et diversifié, le Canada propose un enseignement de premier ordre et d'excellentes voies vers la résidence permanente."
+                }
+            },
+            services: {
+                title: "Services",
+                subtitle: "Un accompagnement complet à chaque étape de votre parcours à l'étranger.",
+                cta: "Obtenir des conseils personnalisés",
+                admissions: {
+                    title: "Admission universitaire",
+                    desc: "Nous vous aidons à choisir le cursus et l'université qui correspondent à votre profil et à vos ambitions."
+                },
+                visa: {
+                    title: "Assistance visa",
+                    desc: "Nos experts vous guident dans les démarches de visa pour un dossier irréprochable."
+                },
+                accommodation: {
+                    title: "Logement",
+                    desc: "Nous vous aidons à trouver un logement étudiant sûr et abordable près du campus."
+                },
+                briefing: {
+                    title: "Briefing avant départ",
+                    desc: "Préparez votre nouvelle vie grâce à nos sessions sur la culture, les voyages et le quotidien."
+                }
+            },
+            about: {
+                title: "À propos de Move",
+                p1: "Chez <1>Move</1>, nous croyons que l'éducation n'a pas de frontières. Fondée pour permettre aux étudiants d'atteindre leurs aspirations mondiales, nous sommes un partenaire de confiance de l'éducation internationale.",
+                p2: "Notre équipe rassemble d'anciens étudiants internationaux et des experts qui comprennent les défis et l'enthousiasme des études à l'étranger. Nous ne nous contentons pas de traiter les dossiers ; nous construisons des parcours professionnels.",
+                p3: "Du choix de la destination à l'intégration culturelle, Move est à vos côtés. Nous plaçons les étudiants dans les meilleures institutions en Irlande, au Royaume-Uni, en Allemagne et au Canada.",
+                cta: "Parler à notre équipe",
+                whyChooseUs: "Pourquoi nous choisir ?",
+                values: {
+                    transparency: { title: "Transparence", desc: "Pas de frais cachés. Nous vous guidons avec honnêteté et intégrité." },
+                    expertise: { title: "Expertise", desc: "Des années d'expérience et une connaissance approfondie des systèmes éducatifs mondiaux." },
+                    support: { title: "Soutien", desc: "Une aide pour les étudiants, même après leur arrivée sur place." }
+                }
+            },
+            contact: {
+                title: "Contact",
+                subtitle: "Prêt à commencer ? Remplissez le formulaire ci-dessous et un conseiller vous contactera.",
+                info: {
+                    title: "Coordonnées",
+                    phone: "Téléphone",
+                    email: "E-mail",
+                    office: "Bureau"
+                },
+                form: {
+                    name: "Nom complet",
+                    email: "Adresse e-mail",
+                    phone: "Numéro de téléphone",
+                    destination: "Destination d'intérêt",
+                    selectDest: "Choisir un pays",
+                    message: "Message",
+                    messagePlaceholder: "Parlez-nous de vos projets d'études...",
+                    submit: "Envoyer",
+                    success: "Merci pour votre intérêt ! Nous vous contacterons bientôt."
+                },
+                countries: {
+                    other: "Autre / Indécis"
+                }
+            }
+        }
     },
     ar: {
         translation: {
+            language: {
+                label: "اللغة",
+            },
             nav: {
                 home: "الرئيسية",
                 services: "خدماتنا",
                 destinations: "وجهاتنا",
                 about: "من نحن",
-                contact: "تواصل معنا"
+                contact: "تواصل معنا",
+                toggleMenu: "فتح القائمة"
             },
             footer: {
                 description: "مساعدة الطلاب على توسيع آفاقهم من خلال تجارب الدراسة الدولية في أيرلندا، المملكة المتحدة، ألمانيا، وكندا.",
@@ -256,12 +396,18 @@ const resources = {
     }
 };
 
+Object.assign(resources.en.translation, pagesEN);
+Object.assign(resources.fr.translation, pagesFR);
+Object.assign(resources.ar.translation, pagesAR);
+
 i18n
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
         resources,
         fallbackLng: 'en',
+        supportedLngs: ['en', 'fr', 'ar'],
+        nonExplicitSupportedLngs: true,
         interpolation: {
             escapeValue: false, // react already safes from xss
         },
